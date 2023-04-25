@@ -23,11 +23,8 @@ if sys.path[0] != root:
 import builtins
 import config
 
-# Grab the SERVER_MODE if it's been set by the runtime
-if 'SERVER_MODE' in globals():
-    builtins.SERVER_MODE = globals()['SERVER_MODE']
-else:
-    builtins.SERVER_MODE = None
+# Grab the SERVER_MODE if it's been set by the runtime    
+builtins.SERVER_MODE = globals()['SERVER_MODE'] if 'SERVER_MODE' in globals(): else None
 
 from pgadmin.model import db, Version, SCHEMA_VERSION as CURRENT_SCHEMA_VERSION
 from pgadmin import create_app
